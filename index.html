@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coffee Paradise</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+
+#about {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+#menu {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+
+#home {
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+}
+       /* Base Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #3d1f10;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Container for the banner section */
+    .banner {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 6vw;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Navigation bar */
+    header {
+      background-color: #4a2915;
+      padding: 1rem 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.45);
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f5a623; /* coffee-like warm orange */
+    }
+
+    header .logo .circle {
+      width: 22px;
+      height: 22px;
+      background: radial-gradient(circle at 40% 40%, #6f4e37, #3d1f10);
+      border-radius: 50%;
+      box-shadow: inset 2px 2px 5px #a6744e, inset -2px -2px 5px #492d1a;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    nav ul li a {
+      color: #e9e1d9;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus-visible {
+      color: #f5a623;
+      outline: none;
+    }
+
+    /* Left content textual */
+    .content-text {
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .subheading {
+      font-family: 'Brush Script MT', cursive;
+      color: #f5a623;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    p.description {
+      color: #d8c9bb;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Buttons container and styling */
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    button,
+    .btn {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.65rem 1.8rem;
+      border-radius: 30px;
+      border: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #f5a623;
+      color: #3d1f10;
+      border: 2px solid transparent;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background-color: #f8ba42;
+      outline: none;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #f5a623;
+      border: 2px solid #f5a623;
+    }
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      color: #3d1f10;
+      background-color: #f5a623;
+      outline: none;
+    }
+
+    /* Right content image container */
+    .content-image {
+      flex: 1 1 320px;
+      max-width: 480px;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .content-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgb(0 0 0 / 0.6);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    /* Adding some animation on image hover for subtle interactive effect */
+    .content-image:hover img {
+      transform: rotateY(15deg) rotateX(8deg) scale(1.05);
+      box-shadow: 0 25px 60px rgb(0 0 0 / 0.75);
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 900px) {
+      .banner {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 5vw;
+      }
+      .content-text, .content-image {
+        max-width: 100%;
+        text-align: center;
+      }
+      .content-text {
+        margin-bottom: 2rem;
+      }
+      nav ul {
+        gap: 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .subheading {
+        font-size: 2rem;
+      }
+      .btn-primary,
+      .btn-outline {
+        padding: 0.55rem 1.4rem;
+        font-size: 0.9rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+        *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #1f1f1f;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Header / Nav */
+    header {
+      background-color: #3c1f1f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.5);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      user-select: none;
+    }
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #6f4e37 0%, #a97454 100%);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      box-shadow:
+        inset 0 3px 6px rgba(255 255 255 / 0.3),
+        0 2px 5px rgba(0 0 0 / 0.6);
+      position: relative;
+    }
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #d9b382, #7f5539 80%);
+      box-shadow: inset 0 2px 3px rgba(0,0,0,0.2);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav li {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fafafa;
+      padding: 0.3rem 0.6rem;
+      border-radius: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    nav li:hover,
+    nav li.active {
+      background-color: #f59e0b;
+      color: #1f1f1f;
+      cursor: pointer;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    h2.section-title {
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fafafa;
+      margin-bottom: 0.3rem;
+      user-select: none;
+    }
+    .underline {
+      width: 80px;
+      height: 4px;
+      background-color: #f59e0b;
+      margin: 0 auto 3rem;
+      border-radius: 2px;
+    }
+
+    /* Menu section */
+    .menu-grid {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .menu-item {
+      background-color: #2a2a2a;
+      padding: 1rem 1.5rem 2rem;
+      border-radius: 15px;
+      max-width: 300px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.7);
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .menu-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgb(0 0 0 / 0.9);
+    }
+    .menu-item img {
+      width: 170px;
+      height: 170px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      border-radius: 100px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.7);
+      background-color: #1f1f1f;
+      user-select: none;
+    }
+    .menu-item h3 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+      color: #eeeeee;
+    }
+    .menu-item p {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #cfcfcf;
+      margin: 0 auto;
+      max-width: 260px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .menu-grid {
+        justify-content: center;
+      }
+      .menu-item {
+        max-width: 260px;
+      }
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .menu-grid {
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+      .menu-item {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+
+
+
+
+        *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    .about-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 3rem 2rem;
+}
+
+    /* Circular image style */
+    .about-image-container {
+      flex: 0 1 320px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgb(216 127 51 / 0.32);
+      border: 8px solid #f7c880;
+      max-width: 320px;
+      aspect-ratio: 1 / 1;
+      background-color: #f7c880;
+    }
+    .about-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: drop-shadow(2px 2px 2px rgb(216 127 51 / 0.6));
+    }
+    /* About text section */
+    .about-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+      text-align: center;
+      
+    }
+    .about-text h2 {
+      font-weight: 800;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+      color: #f59e0b;
+    }
+    .about-text h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #d87f33;
+      margin: 0.5rem auto 2rem;
+      border-radius: 2px;
+      
+    }
+    .about-text p {
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #fff;
+      margin-bottom: 2.5rem;
+    }
+    /* Social icons container */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      color: #fff;
+    }
+    .social-icons a {
+      color: #3a2f2f;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      color: #fff;
+    }
+    .social-icons a:hover {
+      color: #d87f33;
+    }
+    /* Social icon SVG styling */
+    svg.icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        padding: 3rem 1rem 4rem;
+      }
+      .about-text {
+        max-width: 100%;
+      }
+      nav ul {
+        gap: 1.2rem;
+      }
+    }
+
+
+
+
+
+
+
+      .testimonials-section {
+    background-color: #faf3f5;
+    padding: 3rem 1rem 5rem;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+    position: relative;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .section-title {
+    font-weight: 900;
+    font-size: 1.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .underline {
+    width: 4rem;
+    height: 4px;
+    background-color: #e58714;
+    margin: 0 auto 2.5rem;
+    border-radius: 2px;
+  }
+
+  .testimonials-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+
+  .testimonial-card {
+    max-width: 220px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  .testimonial-card.active {
+    opacity: 1;
+  }
+
+  .avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(230, 120, 15, 0.5);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .testimonial-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.3;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .nav-arrow {
+    background: none;
+    border: none;
+    color: #e58714;
+    font-size: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+    padding: 0 12px;
+    line-height: 1;
+    height: 100%;
+  }
+  .nav-arrow:hover,
+  .nav-arrow:focus {
+    color: #c76f0c;
+    outline: none;
+  }
+
+  .dots-navigation {
+    display: flex;
+
+    gap: 0.8rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #e7ad54;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .dot.active,
+  .dot:hover,
+  .dot:focus {
+    background-color: #c76f0c;
+    outline: none;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 720px) {
+    .testimonials-container {
+      gap: 2rem;
+      max-width: 100%;
+    }
+    .testimonial-card {
+      max-width: 180px;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonials-container {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding: 0 1rem;
+      gap: 1.5rem;
+      justify-content: flex-start;
+    }
+    .testimonial-card {
+      flex: 0 0 auto;
+      max-width: 160px;
+      opacity: 1; /* Show all fully on small screens */
+    }
+    .nav-arrow {
+      display: none;
+    }
+  }
+
+
+
+
+
+
+      /* Reset some default */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    section.contact-section {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    /* Navigation bar at top mimicking the example */
+
+
+
+    /* Heading */
+    h2.section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+    h2.section-title + .underline {
+      width: 75px;
+      height: 4px;
+      background-color: #d2952a;
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+    /* Content wrapper - flex container */
+    .contact-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+    }
+    /* Left panel: info */
+    .contact-info {
+      flex: 1 1 320px;
+      max-width: 450px;
+      color: #fff;
+    }
+    .contact-info ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .contact-info ul li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    /* Icon container */
+    .contact-info ul li .icon {
+      min-width: 24px;
+      min-height: 24px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    /* Simple SVG icons styled */
+    .icon-location:before {
+      content: url('data:image/svg+xml;utf8,<svg fill="%233a1f23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.134 2 5 5.134 5 9c0 5.5 7 13 7 13s7-7.5 7-13c0-3.866-3.134-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>');
+    }
+    .icon-mail:before {
+      content: url('data:image/svg+xml;utf8,<svg fill="%233a1f23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16z"/></svg>');
+    }
+    .icon-phone:before {
+      content: url('data:image/svg+xml;utf8,<svg fill="%233a1f23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.091 15.091 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.58 1 1 0 011 1v3.59a1 1 0 01-1 1A16 16 0 014 6a1 1 0 011-1h3.59a1 1 0 011 1c0 1.24.2 2.44.58 3.55a1 1 0 01-.21 1.11l-2.34 2.32z"/></svg>');
+    }
+    .icon-clock:before {
+      content: url('data:image/svg+xml;utf8,<svg fill="%233a1f23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1a11 11 0 1011 11A11 11 0 0012 1zm.5 6v5.25l4.5 2.67-.75 1.23-5-3a1 1 0 01-.5-.87V7z"/></svg>');
+    }
+    .icon-globe:before {
+      content: url('data:image/svg+xml;utf8,<svg fill="%233a1f23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm5.9 5.3h-3.67A15.57 15.57 0 0112 5.1a15.57 15.57 0 01-2.23 2.2H6.1a7.9 7.9 0 019.8 0zM12 18.9a14.46 14.46 0 013.27-3.28H8.73A14.46 14.46 0 0112 18.9zm-8-4.9a8 8 0 0114.12-3.58 20.41 20.41 0 01-1.54 1.54H5.99zm.88 1.54a20.41 20.41 0 011.53 1.54 8 8 0 01-1.53-1.54z"/></svg>');
+    }
+    /* Right panel: form */
+    .contact-form {
+      flex: 1 1 320px;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #d9d5d0;
+      border-radius: 6px;
+      font-size: 1rem;
+      color: #3a1f23;
+      font-weight: 400;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+    }
+    .contact-form input[type="text"]:focus,
+    .contact-form input[type="email"]:focus,
+    .contact-form textarea:focus {
+      border-color: #d2952a;
+      outline: none;
+      background-color: #fffbea;
+    }
+    .contact-form textarea {
+      min-height: 100px;
+    }
+    .contact-form button {
+      align-self: start;
+      background-color: #3a1f23;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.6rem 1.8rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgb(58 31 35 / 0.55);
+      transition: background-color 0.3s ease;
+      font-family: inherit;
+      user-select: none;
+    }
+    .contact-form button:hover,
+    .contact-form button:focus {
+      background-color: #d2952a;
+      outline: none;
+      color: #3a1f23;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .contact-info, .contact-form {
+        max-width: 100%;
+      }
+    }
+
+    .span{
+        padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" aria-label="Coffee logo">
+      <div class="circle" aria-hidden="true"></div>
+      Coffee
+    </div>
+    <nav>
+      <ul role="list">
+        <li><a href="#home" tabindex="0">Home</a></li>
+        <li><a href="#about" tabindex="0">About</a></li>
+        <li><a href="#menu" tabindex="0">Menu</a></li>
+        <li><a href="#testimonials" tabindex="0">Testimonials</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner" role="region" aria-label="Featured coffee promotion" id="home">
+    <article class="content-text">
+      <div class="subheading">Best Coffee</div>
+      <h1>Make your day great with our special coffee!</h1>
+      <p class="description">
+        Welcome to our coffee paradise where every bean tells a story and every cup sparks joy.
+      </p>
+      <div class="btn-group">
+        <button class="btn btn-primary" aria-label="Order coffee now">Order Now</button>
+        <button class="btn btn-outline" aria-label="Contact us regarding coffee">Contact Us</button>
+      </div>
+    </article>
+    <article class="content-image">
+      <img src="images/coffee-hero-section.png" 
+           alt="White coffee cup on a saucer, coffee splashing out surrounded by coffee beans, all with warm brown tones and glossy highlights" 
+           onerror="this.onerror=null;this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/46bd8f5d-8760-4bc6-82b9-68281842410d.png'" />
+    </article>
+  </section>
+
+<!-- HTML SECTION -->
+<section id="about" class="about-wrapper" aria-label="About Us Section">
+  <div class="about-image-container">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f6aee90d-16d9-4949-8793-894b9688192b.png" 
+         alt="A happy young man and woman enjoying coffee together at a small round table in front of a solid warm orange colored background, showing friendly and joyful expression" 
+         onerror="this.style.display='none'" />
+  </div>
+  <div class="about-text" aria-labelledby="aboutus-heading">
+    <h2 id="aboutus-heading">ABOUT US</h2>
+<p>
+  Di <em>Coffee House</em> Sigli, kami bangga menjadi tempat singgah yang nyaman bagi para pecinta kopi dan siapa saja yang ingin menikmati momen berkualitas. Kami berkomitmen menyajikan kopi terbaik dalam suasana hangat dan bersahabat, di mana setiap tamu bisa bersantai, berbagi cerita, dan merasakan keramahan khas daerah kami.
+</p>
+
+    <nav class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" title="Facebook" tabindex="0">
+        <svg class="icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.342v21.316C0 23.4.6 24 1.325 24H12.8v-9.294H9.692v-3.622h3.108V8.413c0-3.066 1.87-4.737 4.604-4.737 1.302 0 2.42.097 2.742.14v3.18h-1.885c-1.48 0-1.766.7-1.766 1.73v2.268h3.538l-.462 3.622h-3.076V24h6.027c.725 0 1.325-.6 1.325-1.342V1.342C24 .6 23.4 0 22.675 0z"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="Instagram" title="Instagram" tabindex="0">
+        <svg class="icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-.75a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0z"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="Twitter" title="Twitter" tabindex="0">
+        <svg class="icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.932 4.932 0 0 0 2.163-2.724 9.924 9.924 0 0 1-3.127 1.184 4.916 4.916 0 0 0-8.381 4.482A13.95 13.95 0 0 1 1.671 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.911 4.911 0 0 0 3.946 4.814 4.996 4.996 0 0 1-1.294.17 4.83 4.83 0 0 1-.922-.089 4.916 4.916 0 0 0 4.59 3.417A9.867 9.867 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.209c9.142 0 14.307-7.721 13.995-14.646a9.935 9.935 0 0 0 2.411-2.534z"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<section id="menu" aria-label="Menu Minuman dan Penyegar">
+  <h2 class="section-title" aria-label="Bagian Menu Kami">Menu Kami</h2>
+  <div class="underline" role="presentation"></div>
+  <div class="menu-grid">
+
+    <!-- Hot Beverages -->
+    <article class="menu-item" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e2e1d6fd-b938-43e4-b17a-fe45f1a5f48a.png" 
+           alt="Cangkir keramik putih dengan kopi panas dan latte art berbentuk hati, di atas piring kecil dengan latar gelap" 
+           onerror="this.onerror=null;this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1a5f48a.png';" />
+      <h3>Minuman Panas</h3>
+      <p>Aneka kopi panas yang nikmat untuk menyegarkan hari Anda.</p>
+      <a href="https://wa.me/6282155954216?text=Halo%20Kak,%20saya%20ingin%20pesan%20minuman%20panas" target="_blank" class="btn btn-outline" aria-label="Beli melalui WhatsApp">Beli</a>
+    </article>
+
+    <!-- Cold Beverages -->
+    <article class="menu-item" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7bc9f124-94a9-4ffc-bfa9-7274e91fce1e.png" 
+           alt="Dua gelas kopi dingin dengan whipped cream dan es batu, di latar gelap" 
+           onerror="this.onerror=null;this.src='https://placehold.co/170x170?text=No+Image';" />
+      <h3>Minuman Dingin</h3>
+      <p>Kopi dingin lembut dan segar untuk menemani hari panas Anda.</p>
+      <a href="https://wa.me/6282155954216?text=Halo%20Kak,%20saya%20ingin%20pesan%20minuman%20dingin" target="_blank" class="btn btn-outline" aria-label="Beli melalui WhatsApp">Beli</a>
+    </article>
+
+    <!-- Refreshment -->
+    <article class="menu-item" tabindex="0">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a6de7459-1e4a-477b-9002-f818a2332dc3.png" 
+           alt="Minuman stroberi dingin dengan buah segar dan daun mint di latar gelap" 
+           onerror="this.onerror=null;this.src='https://placehold.co/170x170?text=No+Image';" />
+      <h3>Penyegar Buah</h3>
+      <p>Minuman buah segar dengan es untuk menyegarkan pikiran dan tubuh.</p>
+      <a href="https://wa.me/6282155954216?text=Halo%20Kak,%20saya%20ingin%20pesan%20minuman%20penyegar" target="_blank" class="btn btn-outline" aria-label="Beli melalui WhatsApp">Beli</a>
+    </article>
+
+  </div>
+</section>
+
+
+<section class="testimonials-section" id="testimonials">
+  <h2 class="section-title">TESTIMONIALS</h2>
+  <div class="underline"></div>
+  <div class="testimonials-container">
+    <button class="nav-arrow nav-left" aria-label="Previous testimonial">
+    </button>
+    <div class="testimonial-card">
+      <div class="avatar">
+        <img 
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a73b3e9-629a-4ab3-b50f-753180055618.png" 
+          alt="Portrait of a young woman wearing glasses, a hoodie and denim jacket, smiling and looking to the side, with a blue background" 
+          loading="lazy" />
+      </div>
+      <h3 class="testimonial-name">Sarah Johnson</h3>
+      <p class="testimonial-text">
+        "Loved the French roast. Perfectly balanced and rich. Will order again!"
+      </p>
+    </div>
+    <div class="testimonial-card active">
+      <div class="avatar">
+        <img 
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0d9b0ccd-7dbc-4499-aebc-3a7b9659af63.png" 
+          alt="Portrait of a young man with glasses, short hair, wearing a light blue shirt, in a coffee shop environment" 
+          loading="lazy" />
+      </div>
+      <h3 class="testimonial-name">James Wilson</h3>
+      <p class="testimonial-text">
+        "Great espresso blend! Smooth and bold flavor. Fast shipping too!"
+      </p>
+    </div>
+    <div class="testimonial-card">
+      <div class="avatar">
+        <img 
+          src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e9725213-ce6a-4902-9cd7-6faa98ff2051.png" 
+          alt="Portrait of a young man with dark hair and beard looking relaxed, wearing a black t-shirt, in front of a plain grey background" 
+          loading="lazy" />
+      </div>
+      <h3 class="testimonial-name">Michael Brown</h3>
+      <p class="testimonial-text">
+        "Fantastic mocha flavor. Fresh and aromatic. Quick shipping!"
+      </p>
+    </div>
+    <button class="nav-arrow nav-right" aria-label="Next testimonial">
+      >
+    </button>
+  </div>
+</section>
+
+
+  <section class="contact-section" role="region" aria-label="Contact us section full screen" id="contact">
+    <h2 class="section-title" id="contact">CONTACT US</h2>
+    <div class="underline" aria-hidden="true"></div>
+
+    <div class="contact-wrapper">
+      <aside class="contact-info" aria-labelledby="contact-info-title">
+        <ul>
+<li><span class="icon icon-location" aria-hidden="true"></span>Jl. Teuku Umar No.12, Kota Sigli, Aceh 24116</li>
+<li><span class="icon icon-mail" aria-hidden="true"></span>info@coffeepasirsigli.com</li>
+<li><span class="icon icon-phone" aria-hidden="true"></span>(0652) 21111</li>
+<li><span class="icon icon-clock" aria-hidden="true"></span>Senin - Jumat: 08:00 - 17:00</li>
+<li><span class="icon icon-clock" aria-hidden="true"></span>Sabtu: 09:00 - 15:00</li>
+<li><span class="icon icon-clock" aria-hidden="true"></span>Minggu: Libur</li>
+<li><span class="icon icon-globe" aria-hidden="true"></span>www.coffeepasirsigli.com</li>
+
+        </ul>
+      </aside>
+
+<form class="contact-form" onsubmit="sendToWhatsApp(event)" aria-labelledby="contact-form-title" novalidate>
+  <input type="text" id="name" name="name" placeholder="Nama Anda" autocomplete="name" aria-label="Nama Anda" required />
+  <input type="email" id="email" name="email" placeholder="Email Anda" autocomplete="email" aria-label="Email Anda" required />
+  <textarea id="message" name="message" placeholder="Pesan Anda" aria-label="Pesan Anda" required></textarea>
+  <button type="submit" aria-label="Kirim melalui WhatsApp">Kirim via WhatsApp</button>
+</form>
+    </div>
+  </section>
+
+
+
+
+<script>
+  function sendToWhatsApp(event) {
+    event.preventDefault(); // mencegah submit default
+
+    // ambil data dari form
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    // jika salah satu kosong, jangan lanjut
+    if (!name || !email || !message) {
+      alert("Mohon isi semua data terlebih dahulu.");
+      return;
+    }
+
+    // nomor WA (format internasional tanpa + atau tanda lain)
+    const phoneNumber = "6282155954216";
+
+    // isi pesan yang akan dikirim ke WA
+    const whatsappMessage = `Halo, saya ingin menghubungi Anda.%0A%0ANama: ${name}%0AEmail: ${email}%0APesan: ${message}`;
+
+    // redirect ke link WA
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURI(whatsappMessage)}`, "_blank");
+  }
+</script>
+</body>
+</html>
+
